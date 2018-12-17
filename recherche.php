@@ -27,7 +27,10 @@
 
     <div class="title">
       <div class="gigasearchbar">
-         <input type="text" name="gigasearch" placeholder="Chercher un contact...">
+        <form action="search.php" method="GET">
+          <input type="text" name="gigasearch" placeholder="Chercher un contact...">
+          <input type="submit" value="Search" />
+        </form>
       </div>
     </div>
 
