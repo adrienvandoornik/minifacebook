@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+ <!-- test kraken push pull -->
   <title>Creer un profil</title>
 
   <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
@@ -111,5 +111,6 @@
           <p>Formation digitale - Mini Facebook by Adrien & Jonathan</p>
         </div>
       </div> <!-- container -->
+       <!-- test kraken push pull -->
 </body>
 </html>
