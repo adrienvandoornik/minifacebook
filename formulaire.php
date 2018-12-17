@@ -17,7 +17,7 @@
   $dixpersonne = $appliDB->selectDixPersonne();
   ?>
 </head>
-
+<!---DEBUT DE LA PAGE --->
 <body>
   <div class="container">
 
