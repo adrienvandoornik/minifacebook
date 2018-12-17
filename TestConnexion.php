@@ -1,5 +1,5 @@
 <?php
-// ca a bien MARCHER !!
+
 require_once("connexion.php");
 // je crée mon objet connexion
 $appliDB = new Connexion();
