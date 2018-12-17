@@ -2,6 +2,7 @@
 <html lang="fr">
 
 <head>
+
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,11 +11,14 @@
 
   <link href="profil.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
   <?php require_once('connexion.php');
   $appliDB = new Connexion();
   $personne_Id = $_GET['id'];
   $personne = $appliDB->selectPersonneById($personne_Id);
-  $liste_relations = $appliDB->getRelationPersonne($personne_Id) ?>
+  $liste_relations = $appliDB->getRelationPersonne($personne_Id) 
+  ?>
+
 </head>
 
 <body>
@@ -94,7 +98,7 @@
     <div class="contenulistcontact">
     <?php
     foreach ($liste_relations as $relation) {
-      echo "<a href='profil.php'>";
+      echo "<a href='profil.php?id=$personne->Id'>";
       echo "<table>";
       echo "<tr>";
       echo "<td><img src='$personne->URL_Photo 'alt=photo profil class=relationconact></td>";
