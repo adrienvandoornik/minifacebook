@@ -89,9 +89,9 @@ class Connexion
             $requete_prepare->execute(
                 array('Nom' => $nom, 'Prenom' => $prenom, 'URL_Photo' => $url_photo, 'Date_Naissance' => $date_naissance, 'Statut_couple' => $statut_couple)
             );
-            return true;
+            return $this->connexion->lastInsertId();
         } catch (Exception $e) {
-            return false;
+            return 0;
         }
     }
 
@@ -232,16 +232,32 @@ class Connexion
         return $liste_relations;
     }
 
+    /**
+     * $personId : l'id de la personne source
+     * $hobbies : un tableau de hobby ids
+     */
+    function insertPersonneHobbies($personId, $hobbies)
+    {
+        // Preparer la requete pour inserer une relation hobby
 
-    function insertPersonneHobbies()
+        // Iterer sur chaque hobby et a chaque boucle executer la requete preparee
+
+    }
+
+    /**
+     * $personId : l'id de la personne source
+     * $musiques : un tableau de musiques ids
+     */
+    function insertPersonneMusique($personId, $musiques)
     {
     }
 
-    function insertPersonneMusique()
-    {
-    }
-
-    function insertPersonneRelation()
+    /**
+     * $personId : l'id de la personne source
+     * $relationId : l'id de la personne en relation avec la personne source
+     * $type : le type de relation
+     */
+    function insertPersonneRelation($personId, $relationId, $type)
     {
     }
 

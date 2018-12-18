@@ -10,7 +10,7 @@
 
   <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
   <link href="formulaire.css" rel="stylesheet">
-  <?php include('connexion.php');
+  <?php require('connexion.php');
   $appliDB = new Connexion();
   $allmusique = $appliDB->selectAllMusique();
   $allhobbies = $appliDB->selectAllHobbies();
@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="divNPPB">
-      <form action="action.php" method="post">
+      <form name="formulaire" action="action.php" method="post">
         <table>
           <tr>
             <th>CREER UN PROFIL</th>
@@ -68,7 +68,7 @@
             <?php
             echo "<td>";
             foreach ($allmusique as $musique) {
-              echo "<input type='checkbox' name='genreMusical[]' value='$musique->Type' id='M$musique->Id'><label for='M$musique->Id'>$musique->Type </label>";
+              echo "<input type='checkbox' name='genreMusical[]' value='$musique->Id' id='M$musique->Id'><label for='M$musique->Id'>$musique->Type </label>";
             }
             echo "</td>";
             ?>
@@ -90,7 +90,7 @@
                 echo "<td>";
                   foreach ($dixpersonne as $personne) {
                     echo "<input type='checkbox' name='personnes[]' value='$personne->Nom' id='P$personne->Id'><label for='P$personne->Id'>$personne->Nom $personne->Prenom </label>
-                    <select id='relation' name='relation[]'>
+                    <select id='relation' name='$personne->Id'>
                       <option label='' value=''></option>
                       <option label='famille' value='famille'>Famille</option>
                       <option label='ami' value='ami'>Ami</option>
