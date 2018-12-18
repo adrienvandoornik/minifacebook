@@ -239,14 +239,21 @@ class Connexion
     function insertPersonneHobbies($personId, $hobbies)
     {
         // Preparer la requete pour inserer une relation hobby
-        $requete_prepare = $this->connexion->prepare(
-            "INSERT INTO `RelationHobby` (`Personne_Id`, `Hobby_Id`) VALUES(:Personne_Id,:Hobby_Id);"
-        );
-
-        // Iterer sur chaque hobby et a chaque boucle executer la requete preparee
-        $requete_prepare->execute(
-            array("id" => $personneId)
-        );
+        try {
+            $requete_prepare = $this->connexion->prepare(
+                "INSERT INTO `RelationHobby` (`Personne_Id`, `Hobby_Id`) VALUES(:Personne_Id,:Hobby_Id);"
+            );
+            // Iterer sur chaque hobby et a chaque boucle executer la requete preparee
+            $requete_prepare->execute(
+                array('hobby' => $hobby)
+            );
+            $requete_prepare->execute(
+                array("id" => $personneId)
+            );
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
 
         $hobbies = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
         return $hobbies;
