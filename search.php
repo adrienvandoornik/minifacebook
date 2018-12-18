@@ -1,4 +1,9 @@
 <?php
+
+require_once("connexion.php");
+// je crée mon objet connexion
+$appliDB = new Connexion();
+
 $query = $_GET['query']; 
     $min_length = 3;
     if(strlen($query) >= $min_length){ 
@@ -15,7 +20,7 @@ $query = $_GET['query'];
             echo "Pas de résultat";
         }  
     }
-    else{ // if query length is less than minimum
+    else{
         echo "Minimum length is ".$min_length;
     }
 ?>
