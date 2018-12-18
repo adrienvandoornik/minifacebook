@@ -244,31 +244,39 @@ class Connexion
                 "INSERT INTO `RelationHobby` (`Personne_Id`, `Hobby_Id`) VALUES(:Personne_Id,:Hobby_Id);"
             );
             // Iterer sur chaque hobby et a chaque boucle executer la requete preparee
-            $requete_prepare->execute(
-                array('hobby' => $hobby)
-            );
-            $requete_prepare->execute(
-                array("id" => $personneId)
-            );
+            foreach($hobbies as $hobby){
+                $requete_prepare->execute(
+                    array("Personne_Id" => $personId,'Hobby_Id' => $hobby)
+                );
+            }
             return true;
         } catch (Exception $e) {
             return false;
         }
-
-        $hobbies = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
-        return $hobbies;
-
     }
 
     /**
      * $personId : l'id de la personne source
      * $musiques : un tableau de musiques ids
      */
-    function insertPersonneMusique($personId, $musiques)
+    function insertPersonneMusiques($personId, $styles)
     {
-        $requete_prepare = $this->connexion->prepare(
-            "INSERT INTO `RelationMusique` (`Personne_Id`, `Musique_Id`) VALUES(:Personne_Id,:Musique_Id);"
-        );
+
+        // Preparer la requete pour inserer une relation hobby
+        try {
+            $requete_prepare = $this->connexion->prepare(
+                "INSERT INTO `RelationMusique` (`Personne_Id`, `Musique_Id`) VALUES(:Personne_Id,:Musique_Id);"
+            );
+            // Iterer sur chaque musique et a chaque boucle executer la requete preparee
+            foreach($styles as $style){
+                $requete_prepare->execute(
+                    array("Personne_Id" => $personId,'Musique_Id' => $style)
+                );
+            }
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
     }
 
     /**
@@ -276,12 +284,24 @@ class Connexion
      * $relationId : l'id de la personne en relation avec la personne source
      * $type : le type de relation
      */
-    function insertPersonneRelation($personId, $relationId, $type)
+    function insertPersonneRelations($personId, $relationId, $type)
     {
-        $requete_prepare = $this->connexion->prepare(
-            "INSERT INTO `RelationPersonne` (`Personne_Id`, `Relation_Id`,`Type`) VALUES(:Personne_Id,:Relation_Id,`:Type`);"
-        );
-    }
 
+        // Preparer la requete pour inserer une relation hobby
+        try {
+            $requete_prepare = $this->connexion->prepare(
+                "INSERT INTO `RelationPersonne` (`Personne_Id`, `Relation_Id`,`Type`) VALUES(:Personne_Id,:Relation_Id,`:Type`);"
+            );
+            // Iterer sur chaque hobby et a chaque boucle executer la requete preparee
+            foreach($relations as $relation){
+                $requete_prepare->execute(
+                    array("Personne_Id" => $personId,'Relation_Id' => $relation,"Type" => $type)
+                );
+            }
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
 }
 ?>
