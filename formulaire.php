@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
- <!-- test kraken push pull -->
   <title>Creer un profil</title>
-
   <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
   <link href="formulaire.css" rel="stylesheet">
   <?php require('connexion.php');
@@ -17,10 +14,8 @@
   $dixpersonne = $appliDB->selectDixPersonne();
   ?>
 </head>
-<!---DEBUT DE LA PAGE --->
 <body>
   <div class="container">
-
     <div class="header">
       <a href="recherche.php"><div class="logo"><h1>Mini Facebook</h1></div></a>
       <div class="barrederechercheheader">
@@ -85,7 +80,6 @@
               </tr>
               <tr>
                 <th>Ajouter des contacts</th>
-
                 <?php
                 echo "<td>";
                   foreach ($dixpersonne as $personne) {

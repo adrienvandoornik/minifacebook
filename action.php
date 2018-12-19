@@ -1,6 +1,5 @@
 <?php
 require_once("connexion.php");
-// je crée mon objet connexion
 $appliDB = new Connexion();
 
     $nom = $_POST['nom'];
@@ -38,24 +37,13 @@ if(!$_POST['Hobbies']){
     echo "Aucune checkbox n'a été cochée";
  }
 
-echo "<br>";
-echo "<br>";
-
 foreach($personnes as $personne)
 {
    echo "La personne $personne avec la relation $_POST[$personne] a été sélectionnée <br>";
 }
 
-echo "<br>";
-echo "<br>";
-
-// J'insere la personne
 $idSource = $appliDB->insertPersonne($nom,$prenom,$url_photo,$date_naissance,$statut_couple);
-
-// Inserer les hobby
 $appliDB->insertPersonneHobbies($idSource, $hobbies);
-
-// Insérer les musiques
 $appliDB->insertPersonneMusiques($idSource, $styles);
 
 // Insérer les relations
