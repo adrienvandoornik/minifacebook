@@ -295,7 +295,7 @@ class Connexion
             // Iterer sur chaque hobby et a chaque boucle executer la requete preparee
             foreach($relations as $relation){
                 $requete_prepare->execute(
-                    array("Personne_Id" => $personId,'Relation_Id' => $relation,"Type" => $type)
+                    array("Personne_Id" => $personId,'Relation_Id' => $relationId,"Type" => $type)
                 );
             }
             return true;

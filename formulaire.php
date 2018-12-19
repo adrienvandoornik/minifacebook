@@ -89,8 +89,8 @@
                 <?php
                 echo "<td>";
                   foreach ($dixpersonne as $personne) {
-                    echo "<input type='checkbox' name='personnes[]' value='$personne->Nom' id='P$personne->Id'><label for='P$personne->Id'>$personne->Nom $personne->Prenom </label>
-                    <select id='relation' name='$personne->Id'>
+                    echo "<input type='checkbox' name='personnes[]' value='$personne->Id' id='P$personne->Id'><label for='P$personne->Id'>$personne->Nom $personne->Prenom </label>
+                    <select id='relation' name='RelType$personne->Id'>
                       <option label='' value=''></option>
                       <option label='famille' value='famille'>Famille</option>
                       <option label='ami' value='ami'>Ami</option>

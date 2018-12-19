@@ -43,7 +43,7 @@ echo "<br>";
 
 foreach($personnes as $personne)
 {
-   echo "La personne $personne avec la relation ".$_POST[$personne]." a été sélectionnée <br>";
+   echo "La personne $personne avec la relation ".$_POST['RelType' . $personne]." a été sélectionnée <br>";
 }
 
 echo "<br>";
@@ -56,9 +56,9 @@ $idSource = $appliDB->insertPersonne($nom,$prenom,$url_photo,$date_naissance,$st
 $appliDB->insertPersonneHobbies($idSource, $hobbies);
 
 // Insérer les musiques
-$appliDB->insertPersonneMusiques($idSource, $styles)
+$appliDB->insertPersonneMusiques($idSource, $styles);
 
 // Insérer les relations
-$appliDB->insertPersonneRelations($idSource, $relationId, $type)
+$appliDB->insertPersonneRelations($idSource, $relationId, $type);
 
 ?>  
