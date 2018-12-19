@@ -1,6 +1,5 @@
 <?php
 require_once("connexion.php");
-// je crée mon objet connexion
 $appliDB = new Connexion();
 
     $nom = $_POST['nom'];
@@ -49,16 +48,9 @@ foreach($personnes as $personne)
 echo "<br>";
 echo "<br>";
 
-// J'insere la personne
 $idSource = $appliDB->insertPersonne($nom,$prenom,$url_photo,$date_naissance,$statut_couple);
-
-// Inserer les hobby
 $appliDB->insertPersonneHobbies($idSource, $hobbies);
-
-// Insérer les musiques
 $appliDB->insertPersonneMusiques($idSource, $styles);
-
-// Insérer les relations
-$appliDB->insertPersonneRelations($idSource, $relationId, $type);
+$appliDB->insertPersonneRelations($idSource,  $relationId, $type);
 
 ?>  
