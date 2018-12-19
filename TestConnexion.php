@@ -107,21 +107,31 @@ echo "</ul>";
 */
 
 
-
+/* 
 echo "<p>Liste de la personne</p>";
 echo "<ul>";
 $resultat = $appliDB->selectPersonneById(4);
     foreach($resultat as $personne){
         echo "<li>".($personne->Nom ."</li>");
     } 
-echo "</ul>";
+echo "</ul>"; */
 
 // Affichage en une liste non ordonnée de Musique
-/* $personne_Id = 1;
+/*  $personne_Id = 1;
 $allMusiquePerson = $appliBD->getPersonneMusique ($personne_Id);
 echo "<ul>";
 foreach ($allMusiquePerson as $value){
     echo "<li>" . $value -> Type . "</li>";
 }
-echo "</ul>";
+echo "</ul>"; */
+
+
+$pattern = "ang";
+$personnes = $appliDB->selectPersonneByNomPrenomLike($pattern);
+var_dump ($personnes);
+foreach ($personnes as $personne){
+    echo $personne->Nom;
+    echo "<br>";
+}
+
 ?>

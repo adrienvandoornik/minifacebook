@@ -18,7 +18,7 @@ $appliDB = new Connexion();
     $hobbies = $_POST['Hobbies'];
     var_dump($hobbies); echo "</br>";
     $personnes = $_POST['personnes'];
-    var_dump($personnes); echo "</br>";
+    var_dump($nom); echo "</br>";
 
 foreach($styles as $style)
 {
@@ -43,7 +43,7 @@ echo "<br>";
 
 foreach($personnes as $personne)
 {
-   echo "La personne $personne avec la relation ".$_POST['RelType' . $personne]." a été sélectionnée <br>";
+   echo "La personne $personne avec la relation $_POST[$personne] a été sélectionnée <br>";
 }
 
 echo "<br>";
@@ -60,5 +60,7 @@ $appliDB->insertPersonneMusiques($idSource, $styles);
 
 // Insérer les relations
 $appliDB->insertPersonneRelations($idSource, $relationId, $type);
+
+
 
 ?>  

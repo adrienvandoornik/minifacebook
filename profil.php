@@ -16,7 +16,7 @@
   $appliDB = new Connexion();
   $personne_Id = $_GET['id'];
   $personne = $appliDB->selectPersonneById($personne_Id);
-  $liste_relations = $appliDB->getRelationPersonne($personne_Id) 
+  $liste_relations = $appliDB->getRelationPersonne($personne_Id); 
   ?>
 
 </head>
@@ -36,7 +36,9 @@
 
     <div class="title">
     <?php
+   
     echo '<div class="titleprofil"><p>PROFIL:' . $personne->Nom . $personne->Prenom . '</p></div>';
+
     ?>
       <div class="titlelistcontact"><p>Liste de personne en relation</p></div>
     </div>
@@ -108,9 +110,7 @@
     }
       ?>
     </div>
-    <div class="footer">
-      <p>Formation digitale - Mini Facebook by Adrien & Jonathan</p>
-    </div>
+    <?php include 'footer.php' ?>
   </div>
 </body>
 </html>

@@ -18,25 +18,12 @@
 <body>
   <div class="container">
 
-    <div class="header">
-        <a href="recherche.php"><div class="logo"><h1>Mini Facebook</h1></div></a>
-      <div class="btncreerunprofil">
-         <a href="formulaire.php"><div class="button">+ Créer un profil</div></a>
-      </div>
-    </div>
-
-    <div class="title">
-      <div class="gigasearchbar">
-        <form action="search.php" method="GET">
-          <input type="text" name="gigasearch" placeholder="Chercher un contact...">
-          <input type="submit" value="Search" />
-        </form>
-      </div>
-    </div>
+    <?php include 'header.php' ?>
 
     <div class="contenu">
       <div class="contenulistcontact">
       <?php
+
     foreach ($liste_personne as $personne) {
       echo "<a href='profil.php?id=$personne->Id'>
       <table>
@@ -46,14 +33,12 @@
      </tr>
    </table></a>";
     }
+    
       ?>
     </div>
   </div>
 
-    <div class="footer">
-      <p>Formation digitale - Mini Facebook by Adrien & Jonathan</p>
-    </div>
-
+  <?php include 'footer.php' ?>
   </div>
 
 </body>

@@ -15,7 +15,7 @@ class Connexion
         // nom d'utilisateur pour se connecter
         $PARAM_utilisateur = 'adminMiniFacebook';
         // mot de passe de l'utilisateur pour se connecter
-        $PARAM_mot_passe = 'minifacebook';
+        $PARAM_mot_passe = 'miniFacebook';
 
         try {
             $this->connexion = new PDO(
@@ -303,5 +303,7 @@ class Connexion
             return false;
         }
     }
+
+
 }
 ?>
