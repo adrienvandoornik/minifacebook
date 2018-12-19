@@ -37,20 +37,13 @@ if(!$_POST['Hobbies']){
     echo "Aucune checkbox n'a été cochée";
  }
 
-echo "<br>";
-echo "<br>";
-
 foreach($personnes as $personne)
 {
    echo "La personne $personne avec la relation ".$_POST['RelType' . $personne]." a été sélectionnée <br>";
 }
 
-echo "<br>";
-echo "<br>";
-
 $idSource = $appliDB->insertPersonne($nom,$prenom,$url_photo,$date_naissance,$statut_couple);
 $appliDB->insertPersonneHobbies($idSource, $hobbies);
 $appliDB->insertPersonneMusiques($idSource, $styles);
 $appliDB->insertPersonneRelations($idSource,  $relationId, $type);
-
 ?>  
