@@ -9,7 +9,7 @@ class Connexion
         $PARAM_nom_bd = 'minifacebook';
         $PARAM_utilisateur = 'adminMiniFacebook';
         // mot de passe de l'utilisateur pour se connecter
-        $PARAM_mot_passe = 'miniFacebook';
+        $PARAM_mot_passe = 'minifacebook';
 
         try {
             $this->connexion = new PDO(
@@ -221,23 +221,20 @@ class Connexion
         }
     }
 
-    function insertPersonneRelations($personId, $relationId, $type)
+    function insertPersonneRelation($personId, $relationId, $type)
     {
         try {
             $requete_prepare = $this->connexion->prepare(
-                "INSERT INTO `RelationPersonne` (`Personne_Id`, `Relation_Id`,`Type`) VALUES(:Personne_Id,:Relation_Id,`:Type`);"
+                "INSERT INTO `RelationPersonne` (`Personne_Id`, `Relation_Id`,`Type`)
+                 VALUES(:Personne_Id, :Relation_Id,:Type);"
             );
-            foreach($relations as $relation){
-                $requete_prepare->execute(
-                    array("Personne_Id" => $personId,"Relation_Id" => $relationId,"Type" => $type)
-                );
-            }
+            $requete_prepare->execute(
+                array("Personne_Id" => $personId,"Relation_Id" => $relationId,"Type" => $type)
+            );
             return true;
         } catch (Exception $e) {
             return false;
         }
     }
-
-
 }
 ?>
