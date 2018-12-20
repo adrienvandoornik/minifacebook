@@ -1,9 +1,11 @@
 <?php
+// Je fais une classe objet connexion
 class Connexion
 {
     private $connexion;
     public function __construct()
     {
+        //les parametres de connexion à la base de données
         $PARAM_hote = 'localhost';
         $PARAM_port = '3306';
         $PARAM_nom_bd = 'minifacebook';
@@ -11,12 +13,14 @@ class Connexion
         // mot de passe de l'utilisateur pour se connecter
         $PARAM_mot_passe = 'minifacebook';
 
+        // j'essaye la connexion
         try {
             $this->connexion = new PDO(
                 'mysql:host=' . $PARAM_hote . ';dbname=' . $PARAM_nom_bd,
                 $PARAM_utilisateur,
                 $PARAM_mot_passe
             );
+        // 
         } catch (Exception $e) {
             echo 'Erreur : ' . $e->getMessage() . '<br />';
             echo 'N° : ' . $e->getCode();
@@ -28,27 +32,36 @@ class Connexion
         return $this->connexion;
     }
 
+
+    // je crée une function insérer un hobby
     function insertHobby(string $hobby)
     {
+        // je prépare la requete
         $requete_prepare = $this->connexion->prepare(
             "INSERT INTO Hobby (Type) values (:hobby)"
         );
+
+        // j'exécute la requete
         $requete_prepare->execute(
             array('hobby' => $hobby)
         );
 
     }
 
+    // je crée la function insérer une musique
     function insertMusique(string $style)
     {
+        // je prépare la requête
         $requete_prepare = $this->connexion->prepare(
             "INSERT INTO Musique (Type) values (:musique)"
         );
+        // j'exécute la requête
         $requete_prepare->execute(
             array('musique' => $style)
         );
     }
 
+    // je crée une autre function insérer un hobby
     function insertHobby2(string $hobby)
     {
 
