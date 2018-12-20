@@ -50,5 +50,7 @@ foreach($personnes as $relationId) {
    $appliDB->insertPersonneRelation($idSource, $relationId, $type);
 }
 
+header("Location: profil.php?id=$idSource");
+
 
 ?>  
