@@ -12,7 +12,14 @@
   <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
    <?php require_once('connexion.php');
   $appliDB = new Connexion();
-  $liste_personne = $appliDB->selectAllPersonne() ?>
+
+  if (isset($_GET["q"])){ 
+    // la je fais la recherche
+    $liste_personne = $appliDB->selectPersonneByNomPrenomLike($_GET["q"]);
+  } else {
+    $liste_personne = $appliDB->selectAllPersonne();
+  }
+  ?>
 </head>
 
 <body>
