@@ -177,7 +177,7 @@ class Connexion
     {
         $requete_prepare = $this->connexion->prepare(
             "SELECT * from RelationPersonne
-            INNER JOIN Personne ON Personne_Id = Id
+            INNER JOIN Personne ON Relation_Id = Id
             WHERE Personne_Id = :id"
         );
         $requete_prepare->execute(
