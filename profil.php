@@ -1,8 +1,6 @@
 <!doctype html>
 <html lang="fr">
-
 <head>
-
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,26 +21,8 @@
 
 <body>
   <div class="container">
-
-    <div class="header">
-        <a href="recherche.php"><div class="logo"><h1>Mini Facebook</h1></div></a>
-      <div class="barrederechercheheader">
-         <input type="text" name="search" placeholder="Chercher un contact...">
-      </div>
-      <div class="btncreerunprofil">
-         <a href="formulaire.php"><div class="button">+ Créer un profil</div></a>
-      </div>
+    <?php include 'header.php' ?>
     </div>
-
-    <div class="title">
-    <?php
-   
-    echo '<div class="titleprofil"><p>PROFIL:' . $personne->Nom . $personne->Prenom . '</p></div>';
-
-    ?>
-      <div class="titlelistcontact"><p>Liste de personne en relation</p></div>
-    </div>
-
     <div class="contenu">
       <div class="contenuprofil">
           <img src="<?php echo "$personne->URL_Photo"?>" alt="photo profil">

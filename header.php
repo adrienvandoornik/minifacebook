@@ -9,7 +9,6 @@
     <div class="gigasearchbar">
     <form action="recherche.php" method="GET">
         <input type="text" name="q"  value="<?php if (isset($_GET['q'])) echo $_GET['q']; ?>" placeholder="Chercher une personne...">
-        <input type="submit" value="Search" />
     </form>
     </div>
 </div>
