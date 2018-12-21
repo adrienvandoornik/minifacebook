@@ -93,7 +93,7 @@ class Connexion
             $requete_prepare->execute(
                 array('Nom' => $nom, 'Prenom' => $prenom, 'URL_Photo' => $url_photo, 'Date_Naissance' => $date_naissance, 'Statut_couple' => $statut_couple)
             );
-            return $this->connexion->lastInsertId();
+            return $this->connexion->lastInsertId(); // je retourne le dernière Id insérer
         } catch (Exception $e) {
             return 0;
         }
@@ -106,6 +106,7 @@ class Connexion
             "SELECT * from Personne"
         );
         $requete_prepare->execute();
+        //  Retourne un tableau contenant tous les objets
         $liste_personne = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
         return $liste_personne;
     }
@@ -117,6 +118,7 @@ class Connexion
             "SELECT * from Personne LIMIT 10"
         );
         $requete_prepare->execute();
+        //  Retourne un tableau contenant tous les objets
         $liste_personne = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
         return $liste_personne;
     }
@@ -158,6 +160,7 @@ class Connexion
     function selectPersonneByNomPrenomLike($pattern)
     {
         $requete_prepare = $this->connexion->prepare(
+            // requete sql
             "SELECT * FROM Personne 
             WHERE Nom LIKE :nom
             OR Prenom LIKE :prenom"
@@ -187,10 +190,10 @@ class Connexion
     {
         $requete_prepare = $this->connexion->prepare(
             "SELECT m.Type 
-        FROM Musique m
-        INNER JOIN RelationMusique r
-        ON m.Id = r.Musique_Id
-        WHERE r.Personne_Id = :personne_Id"
+             FROM Musique m
+             INNER JOIN RelationMusique r
+             ON m.Id = r.Musique_Id
+             WHERE r.Personne_Id = :personne_Id"
         );
         $requete_prepare->execute(
             array('personne_Id' => $personne_Id)
@@ -221,9 +224,9 @@ class Connexion
             $requete_prepare = $this->connexion->prepare(
                 "INSERT INTO `RelationHobby` (`Personne_Id`, `Hobby_Id`) VALUES(:Personne_Id,:Hobby_Id);"
             );
-            foreach($hobbies as $hobby){
+            foreach ($hobbies as $hobby) {
                 $requete_prepare->execute(
-                    array("Personne_Id" => $personId,'Hobby_Id' => $hobby)
+                    array("Personne_Id" => $personId, 'Hobby_Id' => $hobby)
                 );
             }
             return true;
@@ -239,9 +242,9 @@ class Connexion
             $requete_prepare = $this->connexion->prepare(
                 "INSERT INTO `RelationMusique` (`Personne_Id`, `Musique_Id`) VALUES(:Personne_Id,:Musique_Id);"
             );
-            foreach($styles as $style){
+            foreach ($styles as $style) {
                 $requete_prepare->execute(
-                    array("Personne_Id" => $personId,'Musique_Id' => $style)
+                    array("Personne_Id" => $personId, 'Musique_Id' => $style)
                 );
             }
             return true;
@@ -249,7 +252,7 @@ class Connexion
             return false;
         }
     }
-
+    // j'insère les personnes en relation avec le type de relations
     function insertPersonneRelation($personId, $relationId, $type)
     {
         try {
@@ -258,7 +261,7 @@ class Connexion
                  VALUES(:Personne_Id, :Relation_Id,:Type);"
             );
             $requete_prepare->execute(
-                array("Personne_Id" => $personId,"Relation_Id" => $relationId,"Type" => $type)
+                array("Personne_Id" => $personId, "Relation_Id" => $relationId, "Type" => $type)
             );
             return true;
         } catch (Exception $e) {

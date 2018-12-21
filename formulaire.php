@@ -7,6 +7,7 @@
   <title>Creer un profil</title>
   <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
   <link href="formulaire.css" rel="stylesheet">
+  <!--permet d'utiliser les fonctions de connexion.php-->
   <?php require('connexion.php');
   $appliDB = new Connexion();
   $allmusique = $appliDB->selectAllMusique();
@@ -15,6 +16,7 @@
   ?>
 </head>
 <body>
+  <!---la page commence ici--->
   <div class="container">
     <div class="header">
       <a href="recherche.php"><div class="logo"><h1>Mini Facebook</h1></div></a>
@@ -22,6 +24,7 @@
         <a href="formulaire.php"><div class="button">+ Créer un profil</div></a>
       </div>
     </div>
+    <!--Debut du Formulaire d'inscription-->
     <div class="divNPPB">
       <form name="formulaire" action="action.php" method="post">
         <table>
@@ -29,15 +32,15 @@
             <th>CREER UN PROFIL</th>
             <td></td>
           </tr>
-          <tr>
+          <tr><!--champs pour insèrer le nom-->
             <th>Nom</th>
             <td><input type="text" name="nom" placeholder="Insérer votre Nom" required></td>
           </tr>
-          <tr>
+          <tr><!--champs pour insérer le prénom-->
             <th>Prénom</th>
             <td><input type="text" name="prenom" placeholder="Insérer votre Prénom" required></td>
           </tr>
-          <tr>
+          <tr><!--champs pour choisir son statut-->
             <th>Statut</th>
             <td>
                <input type="radio" name="statut" value="celibataire"> Célibataire
@@ -47,16 +50,16 @@
                <input type="radio" name="statut" value="divorce">Divorcé
           </td>
           </tr>
-          <tr>
+          <tr><!--champs pour insèrer la photo-->
             <th>Insérer une photo</th>
             <td><input type="url" name="url" placeholder="Insérer l'url d'une photo ou image"></td>
           </tr>
-          <tr>
+          <tr><!--champs pour insèrer la date de naissance-->
             <th>Date de naissance</th>
             <td><input type="date" name="datedenaissance" required></td>
           </tr>
-          <tr>
-            <th>Préférence muscial</th>
+          <tr><!---boucle qui affiche la checkbox pour selectionné les genres musicaux--->
+            <th>Préférence muscial</th> 
             <?php
             echo "<td>";
             foreach ($allmusique as $musique) {
@@ -65,8 +68,8 @@
             echo "</td>";
             ?>
           </tr>
-              <tr>
-                <th>Hobbies</th>
+              <tr><!--boucle qui affiche la checkbox pour selectionné le type de Hobbies-->
+                <th>Hobbies</th> 
                 <?php
                 echo "<td>";
                 foreach ($allhobbies as $hobbies) {
@@ -75,12 +78,12 @@
                 echo "</td>";
                 ?>
               </tr>
-              <tr>
+              <tr><!--affiche les dix première personne de la base de donnée dans une checkbox pour selectionné le type de relation en commun -->
                 <th>Ajouter des contacts</th>
                 <?php
                 echo "<td>";
-                  foreach ($dixpersonne as $personne) {
-                    echo "<input type='checkbox' name='personnes[]' value='$personne->Id' id='P$personne->Id'><label for='P$personne->Id'>$personne->Nom $personne->Prenom </label>
+                foreach ($dixpersonne as $personne) {
+                  echo "<input type='checkbox' name='personnes[]' value='$personne->Id' id='P$personne->Id'><label for='P$personne->Id'>$personne->Nom $personne->Prenom </label>
                     <select id='relation' name='relation$personne->Id''>
                       <option label='' value=''></option>
                       <option label='famille' value='famille'>Famille</option>
@@ -91,15 +94,15 @@
                 echo "</td>";
                 ?>
               </tr>
-              <tr>
+              <tr> <!--envoi les données dans le formulaire-->
                 <th>Valider</th>
                 <td><input class="Submit" type="submit" value="Enregistrer mon profil"></td>
               </tr>
             </table>
           </form>
-        </div> <!-- divNPPB -->
+        </div> 
+        <!--link vers le ficher footer.php pour le bas de page-->
           <?php include 'footer.php' ?>
-      </div> <!-- container -->
-       <!-- test kraken push pull -->
+      </div> 
 </body>
 </html>
