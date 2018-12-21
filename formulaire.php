@@ -18,9 +18,6 @@
   <div class="container">
     <div class="header">
       <a href="recherche.php"><div class="logo"><h1>Mini Facebook</h1></div></a>
-      <div class="barrederechercheheader">
-        <input type="text" name="search" placeholder="Chercher un contact...">
-      </div>
       <div class="btncreerunprofil">
         <a href="formulaire.php"><div class="button">+ Créer un profil</div></a>
       </div>

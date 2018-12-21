@@ -21,8 +21,9 @@
 
 <body>
   <div class="container">
+
     <?php include 'header.php' ?>
-    </div>
+
     <div class="contenu">
       <div class="contenuprofil">
           <img src="<?php echo "$personne->URL_Photo"?>" alt="photo profil">
@@ -75,7 +76,6 @@
             }
             ?>
           </table>
-          
           </div>
     <div class="contenulistcontact">
     <?php
@@ -89,6 +89,7 @@
       echo "</table></a>";
     }
       ?>
+    </div>
     </div>
     <?php include 'footer.php' ?>
   </div>
