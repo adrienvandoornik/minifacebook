@@ -83,7 +83,7 @@
       echo "<a href='profil.php?id=$relation->Id'>";
       echo "<table>";
       echo "<tr>";
-      echo "<td><img src='$relation->URL_Photo 'alt=photo profil class=relationconact></td>";
+      echo "<td><img src='$relation->URL_Photo 'alt=photo profil class=relationcontact></td>";
       echo "<td><h5>" . $relation->Prenom ." ". $relation->Nom . "</h5><h6>" . $relation->Type . "</h6></td>";
       echo "</tr>";
       echo "</table></a>";
