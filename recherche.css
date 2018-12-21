@@ -53,9 +53,11 @@ a:link{
 
 img {
     display:block;
-    width:auto;
     margin-left:auto;
     margin-right:auto;
+    border-radius:50%;
+    height:70px;
+    width:70px;
 }
 
 .contenulistcontact {
@@ -152,7 +154,6 @@ input[type=text] {
     background-color: black;
 }
 
-
 table {
     border-collapse: collapse;
     width: 100%;
@@ -181,7 +182,3 @@ td {
 tr:hover {
     background-color: #ffff99;
   }
-img{
-    height:70px ;
-    width:70px;
-}
