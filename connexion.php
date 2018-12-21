@@ -20,13 +20,14 @@ class Connexion
                 $PARAM_utilisateur,
                 $PARAM_mot_passe
             );
-        // 
+        // sauf exception
         } catch (Exception $e) {
             echo 'Erreur : ' . $e->getMessage() . '<br />';
             echo 'N° : ' . $e->getCode();
         }
     }
 
+    // je récupère la connexion
     public function getConnexion()
     {
         return $this->connexion;
@@ -66,18 +67,22 @@ class Connexion
     {
 
         try {
+            // je prépare la requête sql
             $requete_prepare = $this->connexion->prepare(
                 "INSERT INTO Hobby (Type) values (:hobby)"
             );
+            // j'exécute la requete sql
             $requete_prepare->execute(
                 array('hobby' => $hobby)
             );
             return true;
+            // si exception retourne faux
         } catch (Exception $e) {
             return false;
         }
     }
 
+    // j'insère une personne
     function insertPersonne($nom, $prenom, $url_photo, $date_naissance, $statut_couple)
     {
         try {
@@ -94,6 +99,7 @@ class Connexion
         }
     }
 
+    // je selectionne toutes les personnes
     function selectAllPersonne()
     {
         $requete_prepare = $this->connexion->prepare(
@@ -104,6 +110,7 @@ class Connexion
         return $liste_personne;
     }
 
+    // je selectionne seulement 10 personnes de la liste
     function selectDixPersonne()
     {
         $requete_prepare = $this->connexion->prepare(
@@ -114,6 +121,7 @@ class Connexion
         return $liste_personne;
     }
 
+    // je selectionne tous les hobbies
     function selectAllHobbies()
     {
         $requete_prepare = $this->connexion->prepare(
@@ -124,6 +132,7 @@ class Connexion
         return $resultat;
     }
 
+    // je selectionne toutes les musiques
     function selectAllMusique()
     {
         $requete_prepare = $this->connexion->prepare(
@@ -134,6 +143,7 @@ class Connexion
         return $resultat;
     }
 
+    // je selectionne les personnes par leur ID
     function selectPersonneById($Id)
     {
         $requete_prepare = $this->connexion->prepare(
@@ -144,6 +154,7 @@ class Connexion
         return $resultat;
     }
 
+    // je selectionne les personnes par nom et prénom
     function selectPersonneByNomPrenomLike($pattern)
     {
         $requete_prepare = $this->connexion->prepare(
@@ -156,6 +167,7 @@ class Connexion
         return $resultat;
     }
 
+    // je récupère les hobbies des personnes
     function getPersonneHobby($personneId)
     {
         $requete_prepare = $this->connexion->prepare(
@@ -170,6 +182,7 @@ class Connexion
         return $hobbies;
     }
 
+    // je récupère les musiques des personnes
     function getPersonneMusique($personne_Id)
     {
         $requete_prepare = $this->connexion->prepare(
@@ -186,6 +199,7 @@ class Connexion
         return $musique;
     }
 
+    // je récupre les relations des personnes
     function getRelationPersonne($personneId)
     {
         $requete_prepare = $this->connexion->prepare(
@@ -200,6 +214,7 @@ class Connexion
         return $liste_relations;
     }
 
+    // j'insère les hobbies en relations avec la personne
     function insertPersonneHobbies($personId, $hobbies)
     {
         try {
@@ -217,6 +232,7 @@ class Connexion
         }
     }
 
+    // j'insère les musiques en relations avec la personne
     function insertPersonneMusiques($personId, $styles)
     {
         try {

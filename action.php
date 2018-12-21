@@ -50,6 +50,8 @@ foreach($personnes as $relationId) {
    $appliDB->insertPersonneRelation($idSource, $relationId, $type);
 }
 
+
+// je redirige sur la page du nouveau profil
 header("Location: profil.php?id=$idSource");
 
 
